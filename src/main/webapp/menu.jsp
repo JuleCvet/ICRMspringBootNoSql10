@@ -22,10 +22,7 @@
 					<a class="nav-link" href="${pageContext.request.contextPath}/addNyAssignment" style="color:#004085;"><b>Add new Assignment</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/updateAnAssignment" style="color:#004085;"><b>Update Assignment</b></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/deleteOneAssignment" style="color:#004085;"><b>Delete Assignment</b></a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/viewAllAssignments" style="color:#004085;"><b>View Assignments</b></a>
 				</li>
 			</ul>
 

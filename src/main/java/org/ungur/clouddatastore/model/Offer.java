@@ -1,9 +1,10 @@
 package org.ungur.clouddatastore.model;
 
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotBlank;
-import com.google.cloud.Date;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.google.cloud.Date;
 
 //If agreement date is entered (and did not previously exist), Offer.status for the id is modified to
 //Closed. If Agreement Date did exist and is cleared, and Offer.status is Closed, user must be forced 
@@ -15,25 +16,26 @@ import com.google.cloud.Date;
 //gcloud beta auth application-default login
 
 public class Offer {
-	
+
 	@NotNull
-	private Long offerId;
-	
+	private Integer offerId;
+
 	private Date offerDate;
 	private Date lastUpdateDate;
 	private Date agreementDate;
-	
-	@NotBlank						
-	private String lastContact;	
+
+	@NotBlank
+	private String lastContact;
 	private String comment;
-	
+
 	@NotBlank
 	private StatusEnum status;
-	
-	public Offer() {}
 
-	public Offer(Long offerId, Date offerDate, Date lastUpdateDate, Date agreementDate, String lastContact, String comment,
-			StatusEnum status) {
+	public Offer() {
+	}
+
+	public Offer(Integer offerId, Date offerDate, Date lastUpdateDate, Date agreementDate, String lastContact,
+			String comment, StatusEnum status) {
 		super();
 		this.offerId = offerId;
 		this.offerDate = offerDate;
@@ -44,11 +46,11 @@ public class Offer {
 		this.status = status;
 	}
 
-	public Long getOfferId() {
+	public Integer getOfferId() {
 		return offerId;
 	}
 
-	public void setOfferId(Long offerId) {
+	public void setOfferId(Integer offerId) {
 		this.offerId = offerId;
 	}
 
@@ -107,4 +109,3 @@ public class Offer {
 				+ ", status=" + status + "]";
 	}
 }
-

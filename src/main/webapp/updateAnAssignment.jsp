@@ -22,7 +22,7 @@
 
 	<div class="container">
     <form:form method="POST" modelAttribute="updateForm" class="form-signin">
-        <h2 class="form-heading">Update assignment  ${assignmentId}</h2>
+        <h2 class="form-heading">Update assignment </h2>
         
         <spring:bind path="customer">
                 <div class="form-group ${status.error ? 'has-error' : ''}">

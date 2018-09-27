@@ -21,12 +21,12 @@
 <jsp:include page="menu.jsp"/>
 <div class="container">
     <br/>
-    <div class="alert alert-danger" role="alert" style="width:64%">
+    <div class="alert alert-danger" role="alert" style="width:68%">
         <h4 class="alert-heading">Are you sure that you want to delete this assignment?</h4>
     </div>
     <div class="container">
         <form:form method="POST" modelAttribute="deleteAssignment" class="form-signin">
-            <h2 class="form-heading">Delete this assignment</h2>
+            <h2 class="form-heading">Delete assignment</h2>
 
             <spring:bind path="customer">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
