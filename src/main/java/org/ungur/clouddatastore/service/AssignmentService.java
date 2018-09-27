@@ -84,7 +84,7 @@ public class AssignmentService {
 	}
 
 	public List<Assignment> readAllAssignments() {
-		ArrayList<Assignment> assignments = new ArrayList<>();
+		ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 		Query<Entity> query = Query.newEntityQueryBuilder().setKind("Assignment").build();
 		QueryResults<Entity> results = datastore.run(query);
 		while (results.hasNext()) {
@@ -98,5 +98,10 @@ public class AssignmentService {
 	@Async
 	public Entity updateAssignment(Assignment assignment) {
 		return datastore.put(createAssignmentEntity(assignment));
+	}
+
+	@Async
+	public void deleteAssignment(Long id) {
+		datastore.delete(assignmentKeyFactory.newKey(id));
 	}
 }

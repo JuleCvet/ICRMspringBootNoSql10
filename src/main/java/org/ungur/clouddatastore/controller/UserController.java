@@ -51,13 +51,6 @@ public class UserController {
 		return userExample;
 	}
 
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public ResponseEntity<Message> addUser(@Valid @RequestBody User user) {
-		userService.createUser(user);// so postMan
-
-		return ResponseEntity.ok().body(new Message("Created"));
-	}
-
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration(Model model) {
 		model.addAttribute("userForm", new User());
@@ -121,16 +114,24 @@ public class UserController {
 		if (logout != null) {
 			model.addAttribute("message", "You have been logout successfully.");
 		}
+		model.addAttribute("login", new User());
 		return "login";
 	}
+
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public String login(@ModelAttribute User login) {
+
+		return "welcome";
+	}
+
 	/*
 	 * @RequestMapping(value = "/login", method = RequestMethod.POST) public String
-	 * login(@ModelAttribute("userForm") User userForm, BindingResult
-	 * bindingResult){ if(bindingResult.hasErrors()) { return "login"; } if
-	 * (userForm.getEmail() != "ivco@hotmail.com") { return "login"; } return
-	 * "redirect:/welcome"; }
+	 * login(@RequestParam("username") String username, @RequestParam("password")
+	 * String password) {
+	 * 
+	 * if (username == "ivan") return "welcome"; else { return "login"; } }
+	 * 
 	 */
-
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public ResponseEntity<Message> deleteUser(@PathVariable("id") Long id) {

@@ -20,20 +20,31 @@
 </head>
 <body>
 <div class="container">
-	<img class="img-responsive center-block" id="img" style="width:70%;" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
-    <form method="POST" action="${contextPath}/login" class="form-signin">
+	<img class="img-responsive center-block" id="img" style="width:30%;" src="${pageContext.request.contextPath}/resources/img/logo.png"></img>
+	<form class="form-signin" action="${contextPath}/login" th:action="@{/login}" th:object="${login}" method="post">
+    <!--<form method="POST" action="${contextPath}/login" class="form-signin">-->
         <h2 class="form-heading">Log in</h2>
 
-        <div class="form-group ${error != null ? 'has-error' : ''}">
+
+	<div class="form-group ${error != null ? 'has-error' : ''}">
+		<span>${message}</span>
+    	<input name ="email" id="email" type="text" class="form-control" placeholder="Username" th:field="*{email}" />
+        <input name="password" id="password" type="text" class="form-control" placeholder="Password" th:field="*{password}" />
+   		<span>${error}</span>        
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+      <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+    </div>    
+
+       <!--   <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Username"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            <input name="username" id="username" type="text" class="form-control" placeholder="Username"/>
+            <input name="password" id="password" type="password" class="form-control" placeholder="Password"/>
             <span>${error}</span>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
             <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-        </div>
+        </div>-->
     </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

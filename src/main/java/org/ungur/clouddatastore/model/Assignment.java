@@ -24,7 +24,7 @@ public class Assignment {
 	public Assignment(Long assignmentId, String customer, String partner, String role, String extend, String startDate,
 			String endDate, String comment) {
 		super();
-		assignmentId = assignmentId;
+		this.assignmentId = assignmentId;
 		this.customer = customer;
 		this.partner = partner;
 		this.role = role;
@@ -39,7 +39,7 @@ public class Assignment {
 	}
 
 	public void setAssignmentId(Long assignmentId) {
-		assignmentId = assignmentId;
+		this.assignmentId = assignmentId;
 	}
 
 	public String getCustomer() {
