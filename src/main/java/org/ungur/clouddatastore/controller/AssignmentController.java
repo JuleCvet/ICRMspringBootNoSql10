@@ -91,8 +91,10 @@ public class AssignmentController {
 	}
 
 	@RequestMapping(value = "/updateAnAssignment/{assignmentId}", method = RequestMethod.POST)
-	public String updateAnAssignment(@ModelAttribute("updateForm") Assignment updateForm, BindingResult bindingResult,
-			Model model) {
+	public String updateAnAssignment(@ModelAttribute("updateForm") Assignment updateForm, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "updateAnAssignment";
+		}
 		assignmentService.updateAssignment(updateForm);
 
 		return "redirect:/welcome";

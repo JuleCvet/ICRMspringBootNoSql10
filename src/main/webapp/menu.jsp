@@ -16,14 +16,21 @@
 					<a class="nav-link" href="${pageContext.request.contextPath}/users" style="color:#004085;" ><b>Show all employees</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/registration" style="color:#004085;"><b>Add new employee</b></a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/registration" style="color:#004085;"><b>Create new employee</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/addNyAssignment" style="color:#004085;"><b>Add new Assignment</b></a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/addNyAssignment" style="color:#004085;"><b>Create new Assignment</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/viewAllAssignments" style="color:#004085;"><b>View Assignments</b></a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/viewAllAssignments" style="color:#004085;"><b>Show all Assignments</b></a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${pageContext.request.contextPath}/viewAlllUserAssignments" style="color:#004085;"><b>Show User-Assignments</b></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${pageContext.request.contextPath}/create-userAssignment" style="color:#004085;"><b>Create User-Assignment</b></a>
+				</li>
+				
 			</ul>
 
 			<c:if test="${pageContext.request.userPrincipal.name != null}">

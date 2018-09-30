@@ -34,7 +34,7 @@
 					<td>${user.fullName}</td>
 					<td><a href="${pageContext.request.contextPath}/updateuser/${user.id}" style="color:#004085;"><b>Update</b></a></td>
 					<td><a href="${pageContext.request.contextPath}/delete/${user.id}" style="color:#004085;"><b>Delete</b></a></td>
-					<td><a href="${pageContext.request.contextPath}/delete/${user.id}" style="color:#004085;"><b>Status</b></a></td>
+					<td><a href="${pageContext.request.contextPath}//${user.id}" style="color:#004085;"><b>Status</b></a></td>
 					<td><a href="${pageContext.request.contextPath}/viewAllAssignments" style="color:#004085;"><b>Assignment</b></a></td>
 				</tr>
 			</c:forEach>
