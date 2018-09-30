@@ -28,7 +28,7 @@ public class AssignmentController {
 	@RequestMapping(value = "/addAssignment", method = RequestMethod.POST)
 	public ResponseEntity<Message> addAssignment(@Valid @RequestBody Assignment assignment) {
 
-		assignmentService.createAssignment(assignment);// so postMan
+		assignmentService.createAssignment(assignment);
 
 		return ResponseEntity.ok().body(new Message("Created"));
 	}
@@ -117,7 +117,6 @@ public class AssignmentController {
 	public String deleteOneAssignment(@PathVariable Long assignmentId) {
 
 		assignmentService.deleteAssignment(assignmentId);
-		;
 
 		return "redirect:/welcome";
 	}

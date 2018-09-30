@@ -50,8 +50,6 @@ public class UserAssignmentService {
 		UserAssignment userAssignmentToReturn = new UserAssignment();
 
 		Long userAssignmentId = userAssigmentEntity.getKey().getId();
-		// Long userId = Long.parseLong(userAssigmentEntity.getLong("id"));
-		// String userId = String.valueOf(userAssigmentEntity.getLong("id"));
 		Long userId = userAssigmentEntity.getLong("id");
 		Long assignmentId = userAssigmentEntity.getLong("assignmentId");
 
