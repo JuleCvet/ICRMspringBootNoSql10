@@ -51,23 +51,6 @@ public class UserAssignmentController {
 		return "create-userAssignment";
 	}
 
-	@RequestMapping(value = "/create-userAssignment", method = RequestMethod.POST)
-	public String create_userAssignment(@ModelAttribute("createUserAssignment") UserAssignment createUserAssignment,
-			BindingResult bindingResult, Model model) {
-
-		// if (bindingResult.hasErrors()) {
-		// return "create-userAssignment";
-		// }
-
-		UserAssignment ua = new UserAssignment();
-		ua.setId((long) 1);
-		ua.setAssignmentId((long) 2);
-		userAssignmentService.createUserAssignment(ua);
-
-		// return createUserAssignment.getId().toString();
-		return "redirect:/welcome";
-	}
-
 	@RequestMapping(value = "/getOneUserAssignment/{userAssignmentId}", method = RequestMethod.GET)
 	@ResponseBody
 	public UserAssignment getOneUserAssignment(@PathVariable("userAssignmentId") Long userAssignmentId) {
@@ -88,15 +71,6 @@ public class UserAssignmentController {
 	public ArrayList<UserAssignment> getAllUserAssignments() {
 		ArrayList<UserAssignment> userAssignments = (ArrayList<UserAssignment>) userAssignmentService
 				.readAllUserAssignments();
-
-		return userAssignments;
-	}
-
-	@RequestMapping(value = "/viewAlllUserAssignments", method = RequestMethod.GET)
-	public ArrayList<UserAssignment> viewAlllUserAssignments(Model model) {
-		ArrayList<UserAssignment> userAssignments = (ArrayList<UserAssignment>) userAssignmentService
-				.readAllUserAssignments();
-		model.addAttribute("list", userAssignments);
 
 		return userAssignments;
 	}
@@ -150,4 +124,118 @@ public class UserAssignmentController {
 
 		return "redirect:/welcome";
 	}
+
+	@RequestMapping(value = "/create-userAssignment", method = RequestMethod.POST)
+	public String create_userAssignment(@ModelAttribute("createUserAssignment") UserAssignment createUserAssignment,
+			BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors()) {
+			return "create-userAssignment";
+		}
+
+		/*
+		 * UserAssignment ua = new UserAssignment(); ua.setId((long) 1);
+		 * ua.setAssignmentId((long) 2); userAssignmentService.createUserAssignment(ua);
+		 * return createUserAssignment.getId().toString();
+		 */
+		userAssignmentService.createUserAssignment(createUserAssignment);
+		return "redirect:/welcome";
+	}
+
+	@RequestMapping(value = "/viewAlllUserAssignments", method = RequestMethod.GET)
+	public ArrayList<UserAssignment> viewAlllUserAssignments(Model model) {
+		ArrayList<UserAssignment> userAssignments = (ArrayList<UserAssignment>) userAssignmentService
+				.readAllUserAssignments();
+
+		model.addAttribute("list", userAssignments);
+
+		return userAssignments;
+	}
+
+	/*
+	 * @RequestMapping(value = "/viewAlllUserAssignments", method =
+	 * RequestMethod.GET) public String viewAlllUserAssignments(Model model) {
+	 * 
+	 * List<UserAssignmentExtended> result = new
+	 * ArrayList<UserAssignmentExtended>();
+	 * 
+	 * for (UserAssignment userAssi :
+	 * userAssignmentService.readAllUserAssignments()) {
+	 * 
+	 * Long userId = userAssi.getId(); User user = userService.readUser(userId);
+	 * 
+	 * Long assignmentExtendId = userAssi.getAssignmentId(); Assignment assignment =
+	 * assignmentService.readAssignment(assignmentExtendId);
+	 * 
+	 * UserAssignmentExtended uae = new
+	 * UserAssignmentExtended(userAssi.getUserAssignmentId(), userAssi.getId(),
+	 * userAssi.getAssignmentId(), assignment.getCustomer(), user.getEmail());
+	 * 
+	 * result.add(uae); }
+	 * 
+	 * model.addAttribute("list", result);
+	 * 
+	 * return "viewAlllUserAssignments"; }
+	 */
+
+	public class UserAssignmentExtended {
+
+		Long userAssignmentId;
+		Long id;
+		Long assignmentId;
+		String customer;
+		String email;
+
+		public UserAssignmentExtended(Long userAssignmentId, Long id, Long assignmentId, String customer,
+				String email) {
+			super();
+			this.userAssignmentId = userAssignmentId;
+			this.id = id;
+			this.assignmentId = assignmentId;
+			this.customer = customer;
+			this.email = email;
+		}
+
+		public Long getUserAssignmentId() {
+			return userAssignmentId;
+		}
+
+		public void setUserAssignmentId(Long userAssignmentId) {
+			this.userAssignmentId = userAssignmentId;
+		}
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public Long getAssignmentId() {
+			return assignmentId;
+		}
+
+		public void setAssignmentId(Long assignmentId) {
+			this.assignmentId = assignmentId;
+		}
+
+		public String getCustomer() {
+			return customer;
+		}
+
+		public void setCustomer(String customer) {
+			this.customer = customer;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+	}
+
 }

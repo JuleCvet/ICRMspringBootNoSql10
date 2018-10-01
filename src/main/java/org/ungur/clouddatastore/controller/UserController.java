@@ -77,9 +77,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/updateuser/{userID}", method = RequestMethod.POST)
-	public String updateuserById(@ModelAttribute("updateForm") User updateForm, BindingResult bindingResult,
-			Model model) {
+	public String updateuserById(@PathVariable Long userID, @ModelAttribute("updateForm") User updateForm,
+			BindingResult bindingResult, Model model) {
 
+		User currUser = userService.readUser(userID);
+
+		updateForm.setId(userID);
+		updateForm.setIsDeleted(currUser.getIsDeleted());
+		updateForm.setPassword(currUser.getPassword());
 		userService.updateUser(updateForm);
 
 		return "redirect:/users";
@@ -140,17 +145,28 @@ public class UserController {
 		return ResponseEntity.ok().body(new Message("Successfully deleted"));
 	}
 
-	@RequestMapping(value = "/delete/{userID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateDeleteuser/{userID}", method = RequestMethod.GET)
 	public String deleteUserByID(@PathVariable Long userID, Model model) {
-		model.addAttribute("deleteUser", userService.readUser(userID));
+		model.addAttribute("updateDeleteForm", userService.readUser(userID));
 
-		return "delete";
+		return "updateDeleteuser";
 	}
 
-	@RequestMapping(value = "/delete/{userID}", method = RequestMethod.POST)
-	public String deleteEmployeeById(@PathVariable Long userID) {
+	/*
+	 * @RequestMapping(value = "/delete/{userID}", method = RequestMethod.POST)
+	 * public String deleteEmployeeById(@PathVariable Long userID) {
+	 * 
+	 * userService.deleteUser(userID);
+	 * 
+	 * return "redirect:/users"; }
+	 */
 
-		userService.deleteUser(userID);
+	@RequestMapping(value = "/updateDeleteuser/{userID}", method = RequestMethod.POST)
+	public String updateDeleteuser(@ModelAttribute("updateDeleteForm") User updateDeleteForm,
+			BindingResult bindingResult, Model model) {
+
+		updateDeleteForm.setIsDeleted(true);
+		userService.updateUser(updateDeleteForm);
 
 		return "redirect:/users";
 	}

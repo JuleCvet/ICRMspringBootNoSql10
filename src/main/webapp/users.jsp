@@ -22,6 +22,7 @@
 			<tr>
 				<th>Employee email</th>
 				<th>Full name</th>
+				<th>Is deleted</th>
 				<th>Update employee</th>
 				<th>Delete account</th>
 				<th>View status</th>
@@ -30,12 +31,29 @@
 			</tr>
 			<c:forEach var="user" items="${list}">
 				<tr>
+				<c:choose>						
+					<c:when test="${user.isDeleted=='1'}">
 					<td>${user.email}</td>
 					<td>${user.fullName}</td>
+					<td><c:choose><c:when test="${user.isDeleted=='1'}"><br /></c:when>    
+						    <c:otherwise>Deleted<br /></c:otherwise></c:choose></td>					
 					<td><a href="${pageContext.request.contextPath}/updateuser/${user.id}" style="color:#004085;"><b>Update</b></a></td>
-					<td><a href="${pageContext.request.contextPath}/delete/${user.id}" style="color:#004085;"><b>Delete</b></a></td>
+					<td><a href="${pageContext.request.contextPath}/updateDeleteuser/${user.id}" style="color:#004085;"><b>Delete</b></a></td>
 					<td><a href="${pageContext.request.contextPath}//${user.id}" style="color:#004085;"><b>Status</b></a></td>
 					<td><a href="${pageContext.request.contextPath}/viewAllAssignments" style="color:#004085;"><b>Assignment</b></a></td>
+					</c:when>
+					
+					<c:otherwise>
+						<td>${user.email}</td>
+						<td>${user.fullName}</td>
+						<td><c:choose><c:when test="${user.isDeleted=='1'}"><br /></c:when>    
+						    <c:otherwise>Deleted<br /></c:otherwise></c:choose></td>					
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					</c:otherwise>
+				</c:choose>
 				</tr>
 			</c:forEach>
 		</table>

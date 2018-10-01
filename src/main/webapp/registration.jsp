@@ -54,6 +54,14 @@
                 <form:errors path="fullName"></form:errors>
             </div>
         </spring:bind>
+        
+        <spring:bind path="isDeleted">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="isDeleted" path="isDeleted" class="form-control"
+                            placeholder="Is-Deleted"></form:input>
+                <form:errors path="isDeleted"></form:errors>
+            </div>
+        </spring:bind>
 
         <button class="btn btn-lg btn-primary btn-block" style="background-color:#004077; border-color:#004077;" type="submit">Submit</button>
     </form:form>

@@ -20,6 +20,7 @@
 		<h1>All User - Assignments</h1>
 		<table class="table table-striped table-bordered">
 			<tr>
+				<th>User Assignment - Id</th>
 				<th>User Id</th>
 				<th>Assignment-Id</th>
 				<th>Update User-Assignment</th>
@@ -29,11 +30,12 @@
 			</tr>
 			<c:forEach var="userAssignment" items="${list}">
 				<tr>
+					<td>${userAssignment.userAssignmentId}</td>
 					<td>${userAssignment.id}</td>
 					<td>${userAssignment.assignmentId}</td>
 					<td><a href="${pageContext.request.contextPath}/updateUserAssignment/${userAssignment.userAssignmentId}" style="color:#004085;"><b>Update</b></a></td>
 					<td><a href="${pageContext.request.contextPath}/deleteUserAssignment/${userAssignment.userAssignmentId}" style="color:#004085;"><b>Delete</b></a></td>
-					<td><a href="${pageContext.request.contextPath}/viewStatus" style="color:#004085;"><b>Status</b></a></td>
+					<td><a href="${pageContext.request.contextPath}/viewStatus" style="color:#004085;"><b>Status</b></a></td> 
 				</tr>
 			</c:forEach>
 		</table>
