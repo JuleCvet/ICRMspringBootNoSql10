@@ -64,6 +64,7 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			return "registration";
 		}
+
 		userService.createUser(userForm);
 		// securityService.autologin(userForm.getFullName(), userForm.get);
 		return "redirect:/welcome";
@@ -162,10 +163,17 @@ public class UserController {
 	 */
 
 	@RequestMapping(value = "/updateDeleteuser/{userID}", method = RequestMethod.POST)
-	public String updateDeleteuser(@ModelAttribute("updateDeleteForm") User updateDeleteForm,
+	public String updateDeleteuser(@PathVariable Long userID, @ModelAttribute("updateDeleteForm") User updateDeleteForm,
 			BindingResult bindingResult, Model model) {
 
+		User currUser = userService.readUser(userID);
+
+		updateDeleteForm.setId(userID);
 		updateDeleteForm.setIsDeleted(true);
+		updateDeleteForm.setPassword(currUser.getPassword());
+		updateDeleteForm.setEmail(currUser.getEmail());
+		updateDeleteForm.setFullName(currUser.getFullName());
+
 		userService.updateUser(updateDeleteForm);
 
 		return "redirect:/users";

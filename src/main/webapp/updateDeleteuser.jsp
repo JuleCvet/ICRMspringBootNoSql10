@@ -31,7 +31,7 @@
             <spring:bind path="email">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="text" path="email" class="form-control" placeholder="Email"
-                                autofocus="true" ></form:input>
+                                autofocus="true" disabled="true" ></form:input>
                     <form:errors path="email"></form:errors>
                 </div>
             </spring:bind>
@@ -39,19 +39,10 @@
             <spring:bind path="fullName">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="fullName" path="fullName" class="form-control"
-                                placeholder="Employee full name"></form:input>
+                                placeholder="Employee full name" disabled="true"></form:input>
                     <form:errors path="fullName"></form:errors>
                 </div>
-            </spring:bind>
-            
-             <spring:bind path="isDeleted">
-                <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="isDeleted" path="isDeleted" class="form-control"
-                                placeholder="Is-Deleted" ></form:input>
-                    <form:errors path="isDeleted"></form:errors>
-                </div>
-            </spring:bind>
-            
+            </spring:bind>            
 
             <button class="btn btn-lg btn-primary btn-block" style="background-color:#004077; border-color:#004077;" type="submit">Delete</button>
         </form:form>
