@@ -16,13 +16,20 @@
 <div class="container">
 		<br/>
 		<form:form method="POST" modelAttribute="createUserAssignment" class="form-signin">
-		<!--<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">-->
 		<p>Today's date:<%= (new java.util.Date()).toLocaleString()%></p>
 		<div class="form-group"></div>
 		
+			 <spring:bind path="userAssignmentId">
+	            <div class="form-group ${status.error ? 'has-error' : ''}">
+	                <form:input type="text" path="userAssignmentId" class="form-control" placeholder="User-Assignment-Id"
+	                            autofocus="true"></form:input>
+	                <form:errors path="userAssignmentId"></form:errors>
+	            </div>
+	        </spring:bind>
+		
 			<h2>Select User</h2>
-			<spring:bind path="id">
-				<form:select class="form-control" style="padding-bottom:5px; padding-top:5px;" path="id">
+			<spring:bind path="userID">
+				<form:select class="form-control" style="padding-bottom:5px; padding-top:5px;" path="userID">
 				
 					<c:forEach var="user" items="${listUsers}">
 						<option value="${user.id}">${user.email}</option>

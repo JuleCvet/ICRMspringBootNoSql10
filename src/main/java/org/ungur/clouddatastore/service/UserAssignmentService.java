@@ -42,7 +42,7 @@ public class UserAssignmentService {
 
 	private Entity createUserAssignmentEntity(UserAssignment userAssignment) {
 		Key key = userAssignmentKeyFactory.newKey(userAssignment.getUserAssignmentId());
-		return Entity.newBuilder(key).set("id", userAssignment.getId())
+		return Entity.newBuilder(key).set("userID", userAssignment.getUserID())
 				.set("assignmentId", userAssignment.getAssignmentId()).build();
 	}
 
@@ -50,11 +50,11 @@ public class UserAssignmentService {
 		UserAssignment userAssignmentToReturn = new UserAssignment();
 
 		Long userAssignmentId = userAssigmentEntity.getKey().getId();
-		Long userId = userAssigmentEntity.getLong("id");
+		Long userId = userAssigmentEntity.getLong("userID");
 		Long assignmentId = userAssigmentEntity.getLong("assignmentId");
 
 		userAssignmentToReturn.setUserAssignmentId(userAssignmentId);
-		userAssignmentToReturn.setId(userId);
+		userAssignmentToReturn.setUserID(userId);
 		userAssignmentToReturn.setAssignmentId(assignmentId);
 
 		return userAssignmentToReturn;

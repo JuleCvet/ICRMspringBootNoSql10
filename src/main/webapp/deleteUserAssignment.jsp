@@ -28,11 +28,11 @@
         <form:form method="POST" modelAttribute="deleteForm" class="form-signin">
             <h2 class="form-heading">Delete User-Assignment</h2>
 
-            <spring:bind path="id">
+            <spring:bind path="userID">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="text" path="id" class="form-control" placeholder="id"
+                    <form:input type="text" path="userID" class="form-control" placeholder="userID"
                                 autofocus="true" disabled="true"></form:input>
-                    <form:errors path="id"></form:errors>
+                    <form:errors path="userID"></form:errors>
                 </div>
             </spring:bind>
 

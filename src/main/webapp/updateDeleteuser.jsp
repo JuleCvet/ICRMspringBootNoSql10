@@ -26,7 +26,7 @@
     </div>
     <div class="container">
         <form:form method="POST" modelAttribute="updateDeleteForm" class="form-signin">
-            <h2 class="form-heading">Delete this account ${id}</h2>
+            <h2 class="form-heading">Delete this account ${userID}</h2>
 
             <spring:bind path="email">
                 <div class="form-group ${status.error ? 'has-error' : ''}">

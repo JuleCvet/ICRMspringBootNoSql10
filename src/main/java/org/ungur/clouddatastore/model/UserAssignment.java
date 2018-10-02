@@ -3,17 +3,17 @@ package org.ungur.clouddatastore.model;
 public class UserAssignment {
 
 	private Long userAssignmentId;
-	private Long id;
+	private Long userID;
 	private Long assignmentId;
 
 	public UserAssignment() {
 		super();
 	}
 
-	public UserAssignment(Long userAssignmentId, Long id, Long assignmentId) {
+	public UserAssignment(Long userAssignmentId, Long userID, Long assignmentId) {
 		super();
 		this.userAssignmentId = userAssignmentId;
-		this.id = id;
+		this.userID = userID;
 		this.assignmentId = assignmentId;
 	}
 
@@ -25,12 +25,12 @@ public class UserAssignment {
 		this.userAssignmentId = userAssignmentId;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUserID() {
+		return userID;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserID(Long userID) {
+		this.userID = userID;
 	}
 
 	public Long getAssignmentId() {
@@ -43,8 +43,8 @@ public class UserAssignment {
 
 	@Override
 	public String toString() {
-		return String.format("UserAssignment [userAssignmentId=%s, id=%s, assignmentId=%s]", userAssignmentId, id,
-				assignmentId);
+		return String.format("UserAssignment [userAssignmentId=%s, userID=%s, assignmentId=%s]", userAssignmentId,
+				userID, assignmentId);
 	}
 
 }

@@ -24,11 +24,11 @@
     <form:form method="POST" modelAttribute="updateForm" class="form-signin">
         <h2 class="form-heading">Update User- Assignment</h2>
         
-        <spring:bind path="id">
+        <spring:bind path="userID">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="id" class="form-control" placeholder="User id"
+                <form:input type="text" path="userID" class="form-control" placeholder="User id"
                             autofocus="true"></form:input>
-                <form:errors path="id"></form:errors>
+                <form:errors path="userID"></form:errors>
             </div>
         </spring:bind>
 

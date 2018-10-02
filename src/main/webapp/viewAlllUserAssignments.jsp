@@ -31,8 +31,8 @@
 			<c:forEach var="userAssignment" items="${list}">
 				<tr>
 					<td>${userAssignment.userAssignmentId}</td>
-					<td>${userAssignment.id}</td>
-					<td>${userAssignment.assignmentId}</td>
+					<td>${userAssignment.userID}(${userAssignment.email})</td>
+					<td>${userAssignment.assignmentId}(${userAssignment.customer})</td>
 					<td><a href="${pageContext.request.contextPath}/updateUserAssignment/${userAssignment.userAssignmentId}" style="color:#004085;"><b>Update</b></a></td>
 					<td><a href="${pageContext.request.contextPath}/deleteUserAssignment/${userAssignment.userAssignmentId}" style="color:#004085;"><b>Delete</b></a></td>
 					<td><a href="${pageContext.request.contextPath}/viewStatus" style="color:#004085;"><b>Status</b></a></td> 
