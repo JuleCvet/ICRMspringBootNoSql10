@@ -1,5 +1,8 @@
 package org.ungur.clouddatastore.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityNotFoundException;
 
@@ -15,6 +18,8 @@ import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
 
 @Service
 public class OfferService {
@@ -38,14 +43,8 @@ public class OfferService {
 
 	private Entity createOfferEntity(Offer offer) {
 		Key key = offerKeyFactory.newKey(offer.getOfferId());
-		System.out.println("offerId: " + offer.getOfferId());
-		System.out.println("assignmentID: " + offer.getAssignmentID());
-		System.out.println("offerDate: " + offer.getOfferDate().toString());
-		System.out.println("lastUpdateDate: " + offer.getLastUpdateDate().toString());
-		System.out.println("agreementDate: " + offer.getAgreementDate().toString());
-		System.out.println("lastContact: " + offer.getLastContact());
-		System.out.println("comment: " + offer.getComment());
-		System.out.println("status: " + offer.getStatus().toString());
+		// System.out.println("offerId: " + offer.getOfferId());
+		// System.out.println("assignmentID: " + offer.getAssignmentID());
 
 		return Entity.newBuilder(key).set("assignmentID", offer.getAssignmentID())
 				.set("offerDate", offer.getOfferDate().toString())
@@ -97,4 +96,24 @@ public class OfferService {
 		return offerToReturn;
 	}
 
+	public List<Offer> readAllOffers() {
+		List<Offer> offers = new ArrayList<>();
+		Query<Entity> query = Query.newEntityQueryBuilder().setKind("Offer").build();
+		QueryResults<Entity> results = datastore.run(query);
+		while (results.hasNext()) {
+			Entity currentEntity = results.next();
+			Offer offer = entityToOffer(currentEntity);
+			offers.add(offer);
+		}
+		return offers;
+	}
+
+	public Entity updateOffer(Offer offer) {
+		return datastore.put(createOfferEntity(offer));
+	}
+
+	public void deleteOffer(Long id) {
+		datastore.delete(offerKeyFactory.newKey(id));
+
+	}
 }

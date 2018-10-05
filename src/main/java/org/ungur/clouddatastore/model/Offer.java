@@ -2,6 +2,8 @@ package org.ungur.clouddatastore.model;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.google.api.client.util.DateTime;
 
 //If agreement date is entered (and did not previously exist), Offer.status for the id is modified to
@@ -23,24 +25,17 @@ public class Offer {
 	@NotNull
 	private Long assignmentID;
 
-	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
-	// @JsonDeserialize(using = LocalDateDeserializer.class)
-	// @JsonProperty
+	@JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
 	private DateTime offerDate;
 
-	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
-	// @JsonDeserialize(using = LocalDateDeserializer.class)
-	// @JsonProperty
+	@JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
 	private DateTime lastUpdateDate;
 
-	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
-	// @JsonDeserialize(using = LocalDateDeserializer.class)
-	// @JsonProperty
+	@JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
 	private DateTime agreementDate;
 
 	private String lastContact;
 	private String comment;
-
 	private StatusEnum status;
 
 	public Offer() {

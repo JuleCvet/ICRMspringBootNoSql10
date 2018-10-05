@@ -36,5 +36,4 @@ public class Application extends SpringBootServletInitializer {
 	public AppErrorController appErrorController() {
 		return new AppErrorController(errorAttributes);
 	}
-
 }

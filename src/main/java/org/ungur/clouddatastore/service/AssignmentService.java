@@ -63,7 +63,6 @@ public class AssignmentService {
 		Assignment assignmentToReturn = new Assignment();
 
 		Long assignmentId = assignmentEntity.getKey().getId();
-		// Timestamp assignmentCustomer = assignmentEntity.getTimestamp("customer");
 		String assignmentCustomer = assignmentEntity.getString("customer");
 		String assignmentPartner = assignmentEntity.getString("partner");
 		String assignmentRole = assignmentEntity.getString("role");
