@@ -31,7 +31,10 @@
 					<a class="nav-link" href="${pageContext.request.contextPath}/create-userAssignment" style="color:#004085;"><b>Create User-Assignment</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="${pageContext.request.contextPath}/addOffer" style="color:#004085;"><b>Add new Offer</b></a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/addOffer" style="color:#004085;"><b>Add Offer</b></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="${pageContext.request.contextPath}/viewOffers" style="color:#004085;"><b>View all Offers</b></a>
 				</li>
 				
 			</ul>

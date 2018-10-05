@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
 <jsp:include page="cssandjs.jsp"/>
 <script type="text/javascript">
 
@@ -37,7 +37,7 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
 	} 
 </script>
 
-<title>Create an offer</title>
+<title>Update an offer</title>
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>	
 </head>
 
@@ -45,8 +45,8 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
 <jsp:include page="menu.jsp"/>
 
 	<div class="container">
-    <form:form method="POST" modelAttribute="addForm" class="form-signin">
-        <h2 class="form-heading">Create Offer</h2>
+    <form:form method="POST" modelAttribute="updateForm" class="form-signin">
+        <h2 class="form-heading">Update Offer</h2>
         
         <spring:bind path="offerId">
             <div class="form-group ${status.error ? 'has-error' : ''}">

@@ -54,7 +54,7 @@ public class OfferService {
 
 	}
 
-	public Offer readOffer(Integer offerId) {
+	public Offer readOffer(Long offerId) {
 		try {
 			Entity offerEntity = datastore.get(offerKeyFactory.newKey(offerId));
 			return entityToOffer(offerEntity);
@@ -97,7 +97,7 @@ public class OfferService {
 	}
 
 	public List<Offer> readAllOffers() {
-		List<Offer> offers = new ArrayList<>();
+		ArrayList<Offer> offers = new ArrayList<>();
 		Query<Entity> query = Query.newEntityQueryBuilder().setKind("Offer").build();
 		QueryResults<Entity> results = datastore.run(query);
 		while (results.hasNext()) {
