@@ -2,14 +2,13 @@ package org.ungur.clouddatastore.model;
 
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.google.cloud.Date;
+import com.google.api.client.util.DateTime;
 
 //If agreement date is entered (and did not previously exist), Offer.status for the id is modified to
 //Closed. If Agreement Date did exist and is cleared, and Offer.status is Closed, user must be forced 
 //to modify status to either New or Rejected, an offer cannot be Closed and without Agreement at the 
 //same time. 
+
 //If Agreement Date is not set and Last Updated is edited, save the object as a new entry in the data store. 
 //The web application must always display the version with the newest Last Updated value. 
 //If Last Contact but not Last Updated is edited, replace the existing record in the data store. 
@@ -17,27 +16,41 @@ import com.google.cloud.Date;
 
 public class Offer {
 
+	public static final String ISO_LOCAL_DATE_PATTERN = "yyyy-MM-dd";
+
+	private Long offerId;
+
 	@NotNull
-	private Integer offerId;
+	private Long assignmentID;
 
-	private Date offerDate;
-	private Date lastUpdateDate;
-	private Date agreementDate;
+	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @JsonDeserialize(using = LocalDateDeserializer.class)
+	// @JsonProperty
+	private DateTime offerDate;
 
-	@NotBlank
+	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @JsonDeserialize(using = LocalDateDeserializer.class)
+	// @JsonProperty
+	private DateTime lastUpdateDate;
+
+	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @JsonDeserialize(using = LocalDateDeserializer.class)
+	// @JsonProperty
+	private DateTime agreementDate;
+
 	private String lastContact;
 	private String comment;
 
-	@NotBlank
 	private StatusEnum status;
 
 	public Offer() {
 	}
 
-	public Offer(Integer offerId, Date offerDate, Date lastUpdateDate, Date agreementDate, String lastContact,
-			String comment, StatusEnum status) {
+	public Offer(Long offerId, Long assignmentID, DateTime offerDate, DateTime lastUpdateDate, DateTime agreementDate,
+			String lastContact, String comment, StatusEnum status) {
 		super();
 		this.offerId = offerId;
+		this.assignmentID = assignmentID;
 		this.offerDate = offerDate;
 		this.lastUpdateDate = lastUpdateDate;
 		this.agreementDate = agreementDate;
@@ -46,28 +59,20 @@ public class Offer {
 		this.status = status;
 	}
 
-	public Integer getOfferId() {
+	public Long getAssignmentID() {
+		return assignmentID;
+	}
+
+	public void setAssignmentID(Long assignmentID) {
+		this.assignmentID = assignmentID;
+	}
+
+	public Long getOfferId() {
 		return offerId;
 	}
 
-	public void setOfferId(Integer offerId) {
+	public void setOfferId(Long offerId) {
 		this.offerId = offerId;
-	}
-
-	public Date getOfferDate() {
-		return offerDate;
-	}
-
-	public void setOfferDate(Date offerDate) {
-		this.offerDate = offerDate;
-	}
-
-	public Date getLastUpdateDate() {
-		return lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public String getLastContact() {
@@ -94,18 +99,35 @@ public class Offer {
 		this.status = status;
 	}
 
-	public Date getAgreementDate() {
+	public DateTime getOfferDate() {
+		return offerDate;
+	}
+
+	public void setOfferDate(DateTime offerDate) {
+		this.offerDate = offerDate;
+	}
+
+	public DateTime getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(DateTime lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public DateTime getAgreementDate() {
 		return agreementDate;
 	}
 
-	public void setAgreementDate(Date agreementDate) {
+	public void setAgreementDate(DateTime agreementDate) {
 		this.agreementDate = agreementDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Offer [offerId=" + offerId + ", offerDate=" + offerDate + ", lastUpdateDate=" + lastUpdateDate
-				+ ", agreementDate=" + agreementDate + ", lastContact=" + lastContact + ", comment=" + comment
-				+ ", status=" + status + "]";
+		return String.format(
+				"Offer [offerId=%s, IdAssignment=%s, offerDate=%s, lastUpdateDate=%s, agreementDate=%s, lastContact=%s, comment=%s, status=%s]",
+				offerId, assignmentID, offerDate, lastUpdateDate, agreementDate, lastContact, comment, status);
 	}
+
 }
