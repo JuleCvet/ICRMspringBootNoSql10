@@ -2,8 +2,8 @@ package org.ungur.clouddatastore.model;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.google.api.client.util.DateTime;
 
 //If agreement date is entered (and did not previously exist), Offer.status for the id is modified to
@@ -24,14 +24,37 @@ public class Offer {
 
 	@NotNull
 	private Long assignmentID;
-
-	@JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// 2018-09-30
+	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @DateTimeFormat(pattern = "MM/dd/yyyy")
+	// @DateTimeFormat(pattern = "dd-MM-yyyy")
+	// @DateTimeFormat(iso = ISO.DATE)
+	// @DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	// @DateTimeFormat(pattern = "MM-dd-yyyy")
+	// @DateTimeFormat(iso = ISO.DATE_TIME)
 	private DateTime offerDate;
 
-	@JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @JsonFormat(shape = Shape.STRING, pattern =
+	// ISO_LOCAL_DATE_PATTERN)@DateTimeFormat(pattern = "MM/dd/yyyy")
+	// @DateTimeFormat(pattern = "dd-MM-yyyy")
+	// @DateTimeFormat(iso = ISO.DATE)
+	// @DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	// @DateTimeFormat(pattern = "MM/dd/yyyy")
+	// @DateTimeFormat(pattern = "MM-dd-yyyy")
+	// @DateTimeFormat(iso = ISO.DATE_TIME)
 	private DateTime lastUpdateDate;
 
-	@JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
+	// @DateTimeFormat(pattern = "MM/dd/yyyy")
+	// @DateTimeFormat(pattern = "dd-MM-yyyy")
+	// @DateTimeFormat(iso = ISO.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	// @DateTimeFormat(pattern = "dd/MM/yyyy")
+	// @DateTimeFormat(pattern = "MM/dd/yyyy")
+	// @DateTimeFormat(pattern = "MM-dd-yyyy")
+	// @DateTimeFormat(iso = ISO.DATE_TIME)
 	private DateTime agreementDate;
 
 	private String lastContact;

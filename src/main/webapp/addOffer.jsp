@@ -15,10 +15,10 @@
     <meta name="author" content="">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-
-<jsp:include page="cssandjs.jsp"/>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
 
 <title>Create an offer</title>
+<jsp:include page="cssandjs.jsp"/>
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>	
 </head>
 
@@ -30,13 +30,13 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
 	 '06/06/2018', '06/22/2018','06/23/2018', '11/03/2018', '12/24/2018',  '12/25/2018',  '12/26/2018',  '12/31/2018'];
 	 
   $( function() {
-    $( "#datepicker" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays});
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd', firstDay: 1 , beforeShowDay: highlightDays});
   } );
   $( function() {
-	    $( "#datepicker1" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays});
+	    $( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd', firstDay: 1 , beforeShowDay: highlightDays});
  } );
   $( function() {
-	    $( "#datepicker2" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays});
+	    $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd', firstDay: 1 , beforeShowDay: highlightDays});
 } );
 
   function highlightDays(date) {

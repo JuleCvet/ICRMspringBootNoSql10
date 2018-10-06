@@ -13,19 +13,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 
-<jsp:include page="cssandjs.jsp"/>
 <script type="text/javascript">
 
 var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018', '05/01/2018', '05/10/2018', '05/20/2018', 
 	 '06/06/2018', '06/22/2018','06/23/2018', '11/03/2018', '12/24/2018',  '12/25/2018',  '12/26/2018',  '12/31/2018'];
 	 
   $( function() {
-    $( "#datepicker" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays});
+    $( "#datepicker" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays, dateFormat: 'yy-mm-dd'});
   } );
   $( function() {
-	    $( "#datepicker1" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays});
+	    $( "#datepicker1" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays, dateFormat: 'yy-mm-dd'});
  } );
+  $( function() {
+	    $( "#datepicker2" ).datepicker({ firstDay: 1 , beforeShowDay: highlightDays, dateFormat: 'yy-mm-dd'});
+} );
+
   
   function highlightDays(date) {
 	    for (var i = 0; i < dates.length; i++) {
@@ -38,6 +44,8 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
 </script>
 
 <title>Update an offer</title>
+
+<jsp:include page="cssandjs.jsp"/>
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>	
 </head>
 
@@ -74,7 +82,7 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
 
         <spring:bind path="lastUpdateDate">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="lastUpdateDate" path="lastUpdateDate"   id="datepicker" 
+                <form:input type="lastUpdateDate" path="lastUpdateDate"   id="datepicker1" 
                 class="form-control" placeholder="last Update Date"></form:input>
                 <form:errors path="lastUpdateDate"></form:errors>
             </div>
@@ -82,7 +90,7 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
         
         <spring:bind path="agreementDate">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="agreementDate" path="agreementDate"   id="datepicker" 
+                <form:input type="agreementDate" path="agreementDate"   id="datepicker2" 
                 class="form-control" placeholder="Agreement Date"></form:input>
                 <form:errors path="agreementDate"></form:errors>
             </div>
@@ -116,7 +124,5 @@ var dates = ['01/01/2018', '01/06/2018', '03/30/2018','04/01/2018', '04/02/2018'
         <button class="btn btn-lg btn-primary btn-block" style="background-color:#004077; border-color:#004077;" type="submit">Submit</button>
     </form:form>
 </div>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body>
 </html>

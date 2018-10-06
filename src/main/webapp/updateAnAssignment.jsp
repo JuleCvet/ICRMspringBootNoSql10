@@ -13,8 +13,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <title>Update an assignment</title>
-	<jsp:include page="cssandjs.jsp"/>
-	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
+<jsp:include page="cssandjs.jsp"/>
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
 	
 </head>
 <body>

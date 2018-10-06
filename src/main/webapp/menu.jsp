@@ -11,7 +11,7 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav w-75 justify-content-center">
+			<ul class="navbar-nav w-75 justify-content-center" style="width:100%!important;">
 				<li class="nav-item">
 					<a class="nav-link" href="${pageContext.request.contextPath}/users" style="color:#004085;" ><b>Show all employees</b></a>
 				</li>

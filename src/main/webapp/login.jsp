@@ -15,8 +15,8 @@
 
 <title>Log in with your account</title>
 <jsp:include page="cssandjs.jsp"/>
-	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
-	<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"> 
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
+<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"> 
 </head>
 <body>
 <div class="container">

@@ -12,9 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Delete User-Assignment</title>
-    <jsp:include page="cssandjs.jsp"/>
-    <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
+<title>Delete User-Assignment</title>
+<jsp:include page="cssandjs.jsp"/>
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
 
 </head>
 <body>

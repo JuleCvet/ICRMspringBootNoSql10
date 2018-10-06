@@ -8,9 +8,9 @@
 		  xmlns:security="http://www.springframework.org/security/tags">
 
 <head>
-	<title>User-Assignments</title>
-	<jsp:include page="cssandjs.jsp"/>
-	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
+<title>User-Assignments</title>
+<jsp:include page="cssandjs.jsp"/>
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
 </head>
 
 <body>

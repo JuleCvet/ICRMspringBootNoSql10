@@ -7,13 +7,13 @@
 	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core"
 		  xmlns:security="http://www.springframework.org/security/tags">
 
-	<head>
-		<title>Assignments</title>
-		<jsp:include page="cssandjs.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
-	</head>
+<head>
+<title>Assignments</title>
+<jsp:include page="cssandjs.jsp"/>
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet"/>
+</head>
 
-	<body>
+<body>
 	<jsp:include page="menu.jsp"/>
 	<div class="container">
 		<br/>
@@ -49,8 +49,8 @@
 		</table>
 		<br/>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-	</body>
-	</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>
 </jsp:root>
