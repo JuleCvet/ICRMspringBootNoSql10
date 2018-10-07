@@ -2,19 +2,7 @@ package org.ungur.clouddatastore.model;
 
 import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.google.api.client.util.DateTime;
-
-//If agreement date is entered (and did not previously exist), Offer.status for the id is modified to
-//Closed. If Agreement Date did exist and is cleared, and Offer.status is Closed, user must be forced 
-//to modify status to either New or Rejected, an offer cannot be Closed and without Agreement at the 
-//same time. 
-
-//If Agreement Date is not set and Last Updated is edited, save the object as a new entry in the data store. 
-//The web application must always display the version with the newest Last Updated value. 
-//If Last Contact but not Last Updated is edited, replace the existing record in the data store. 
-//gcloud beta auth application-default login
 
 public class Offer {
 
@@ -24,37 +12,9 @@ public class Offer {
 
 	@NotNull
 	private Long assignmentID;
-	// 2018-09-30
-	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
-	// @DateTimeFormat(pattern = "MM/dd/yyyy")
-	// @DateTimeFormat(pattern = "dd-MM-yyyy")
-	// @DateTimeFormat(iso = ISO.DATE)
-	// @DateTimeFormat(pattern = "dd/MM/yyyy")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	// @DateTimeFormat(pattern = "MM-dd-yyyy")
-	// @DateTimeFormat(iso = ISO.DATE_TIME)
+
 	private DateTime offerDate;
-
-	// @JsonFormat(shape = Shape.STRING, pattern =
-	// ISO_LOCAL_DATE_PATTERN)@DateTimeFormat(pattern = "MM/dd/yyyy")
-	// @DateTimeFormat(pattern = "dd-MM-yyyy")
-	// @DateTimeFormat(iso = ISO.DATE)
-	// @DateTimeFormat(pattern = "dd/MM/yyyy")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	// @DateTimeFormat(pattern = "MM/dd/yyyy")
-	// @DateTimeFormat(pattern = "MM-dd-yyyy")
-	// @DateTimeFormat(iso = ISO.DATE_TIME)
 	private DateTime lastUpdateDate;
-
-	// @JsonFormat(shape = Shape.STRING, pattern = ISO_LOCAL_DATE_PATTERN)
-	// @DateTimeFormat(pattern = "MM/dd/yyyy")
-	// @DateTimeFormat(pattern = "dd-MM-yyyy")
-	// @DateTimeFormat(iso = ISO.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	// @DateTimeFormat(pattern = "dd/MM/yyyy")
-	// @DateTimeFormat(pattern = "MM/dd/yyyy")
-	// @DateTimeFormat(pattern = "MM-dd-yyyy")
-	// @DateTimeFormat(iso = ISO.DATE_TIME)
 	private DateTime agreementDate;
 
 	private String lastContact;

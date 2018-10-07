@@ -27,8 +27,8 @@
 				<th>last contacted person</th>
 				<th>Comment</th>
 				<th>Status</th>
-				<th>Update Assignment</th>
-				<th>Delete Assignment</th>		
+				<th>Update Offer</th>
+				<th>Delete Offer</th>		
 			</tr>
 			<c:forEach var="offer" items="${list}">
 				<tr>

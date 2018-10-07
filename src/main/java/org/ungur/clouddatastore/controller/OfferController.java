@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.ungur.clouddatastore.model.Message;
 import org.ungur.clouddatastore.model.Offer;
+import org.ungur.clouddatastore.model.StatusEnum;
 import org.ungur.clouddatastore.service.OfferService;
 
 @Controller
@@ -41,16 +41,19 @@ public class OfferController {
 	}
 
 	@RequestMapping(value = "/addOffer", method = RequestMethod.POST)
-	public String addOffer(@RequestParam("offerDate") String offerDate,
-			@RequestParam("lastUpdateDate") String lastUpdateDate, @RequestParam("agreementDate") String agreementDate,
-			@ModelAttribute("addForm") Offer addForm, BindingResult bindingResult, Model model) {
+	public String addOffer(@ModelAttribute("addForm") Offer addForm, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
 			return "addOffer";
 		}
+		if (addForm.getAgreementDate() == null) {
+			addForm.setStatus(StatusEnum.NEW);
+		} else
+			addForm.setStatus(StatusEnum.CLOSED);
 
 		offerService.createOffer(addForm);
 		return "redirect:/welcome";
+
 	}
 
 	@RequestMapping(value = "/getOneOfferByID/{id}", method = RequestMethod.GET)
